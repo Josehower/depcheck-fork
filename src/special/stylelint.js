@@ -148,21 +148,21 @@ function checkConfig(config, rootDir, includedDeps = []) {
     .filter((dep) => !includedDeps.includes(dep));
 
   // TODO: this require more investigation
-  configs.forEach((value) => {
-    if (value.settings) {
-      Object.keys(value.settings).forEach((key) => {
-        if (key !== 'import/resolver') {
-          return;
-        }
-        Object.keys(value.settings[key]).forEach((resolverName) => {
-          // node and webpack resolvers are included in `stylelint-plugin-import`
-          if (!['node', 'webpack'].includes(resolverName)) {
-            result.push(`eslint-import-resolver-${resolverName}`);
-          }
-        });
-      });
-    }
-  });
+  // configs.forEach((value) => {
+  //   if (value.settings) {
+  //     Object.keys(value.settings).forEach((key) => {
+  //       if (key !== 'import/resolver') {
+  //         return;
+  //       }
+  //       Object.keys(value.settings[key]).forEach((resolverName) => {
+  //         // node and webpack resolvers are included in `stylelint-plugin-import`
+  //         if (!['node', 'webpack'].includes(resolverName)) {
+  //           result.push(`eslint-import-resolver-${resolverName}`);
+  //         }
+  //       });
+  //     });
+  //   }
+  // });
 
   return result;
 }
